@@ -13,10 +13,12 @@ import type {
   FilterApi,
   FunctionReference,
 } from "convex/server";
+import type * as apiHistory from "../apiHistory.js";
 import type * as apiTester from "../apiTester.js";
 import type * as auth from "../auth.js";
 import type * as dashboard from "../dashboard.js";
 import type * as http from "../http.js";
+import type * as middleware from "../middleware.js";
 import type * as otp from "../otp.js";
 import type * as router from "../router.js";
 import type * as sessions from "../sessions.js";
@@ -31,10 +33,12 @@ import type * as users from "../users.js";
  * ```
  */
 declare const fullApi: ApiFromModules<{
+  apiHistory: typeof apiHistory;
   apiTester: typeof apiTester;
   auth: typeof auth;
   dashboard: typeof dashboard;
   http: typeof http;
+  middleware: typeof middleware;
   otp: typeof otp;
   router: typeof router;
   sessions: typeof sessions;

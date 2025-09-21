@@ -3,6 +3,17 @@ import { v } from "convex/values";
 import { authTables } from "@convex-dev/auth/server";
 
 const applicationTables = {
+  apiHistory: defineTable({
+    userId: v.string(),
+    name: v.string(),
+    url: v.string(),
+    method: v.union(v.literal("GET"), v.literal("POST")),
+    headers: v.record(v.string(), v.string()),
+    body: v.optional(v.string()),
+    createdAt: v.number(),
+  })
+    .index("by_user_id", ["userId"])
+    .index("by_user_and_date", ["userId", "createdAt"]),
   userProfiles: defineTable({
     userId: v.id("users"),
     firstName: v.optional(v.string()),

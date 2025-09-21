@@ -4,6 +4,7 @@ import { api } from "../../convex/_generated/api";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { toast } from "sonner";
 import { ApiTester } from "./ApiTester";
+import { ErrorBoundary } from "./ErrorBoundary";
 
 export function Dashboard() {
   const { signOut } = useAuthActions();
@@ -290,7 +291,11 @@ export function Dashboard() {
         </>
       )}
 
-      {activeTab === "api-tester" && <ApiTester />}
+      {activeTab === "api-tester" && (
+        <ErrorBoundary>
+          <ApiTester />
+        </ErrorBoundary>
+      )}
     </div>
   );
 }

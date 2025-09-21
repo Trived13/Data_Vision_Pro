@@ -304,14 +304,21 @@ export function DashboardBuilder({ data, onClose }: DashboardBuilderProps) {
       case "bar":
         return (
           <ResponsiveContainer {...commonProps}>
-            <BarChart data={processedData}>
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey={chartConfig.xAxis} />
-              <YAxis />
-              <Tooltip />
-              <Legend />
-              <Bar dataKey={chartConfig.yAxis} fill="#8884d8" />
-            </BarChart>
+              <BarChart data={processedData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey={chartConfig.xAxis} />
+                <YAxis />
+                <Tooltip />
+                <Legend />
+                <Bar dataKey={chartConfig.yAxis}>
+                  {processedData.map((entry, index) => {
+                    const colors = ["#8884d8", "#82ca9d", "#ffc658", "#ff7f50", "#0088fe", "#00c49f", "#ffbb28", "#ff8042", "#a4de6c", "#d0ed57"];
+                    return (
+                      <Cell key={`cell-${index}`} fill={colors[index % colors.length]} />
+                    );
+                  })}
+                </Bar>
+              </BarChart>
           </ResponsiveContainer>
         );
       case "line":

@@ -4,6 +4,14 @@ import path from "path";
 
 // https://vite.dev/config/
 export default defineConfig(({ mode }) => ({
+  server: {
+    port: 5174,
+    strictPort: true,
+    host: true, // needed for the Docker Container port mapping to work
+    watch: {
+      usePolling: true,
+    },
+  },
   plugins: [
     react(),
     // The code below enables dev tools like taking screenshots of your site
